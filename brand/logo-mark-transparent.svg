@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">noctcore transparent logo mark</title>
+  <desc id="desc">A standalone gradient crescent moon cradling a glowing cyan core orb on transparent background.</desc>
+  <defs>
+    <linearGradient id="accent" x1="126" y1="124" x2="358" y2="378" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#4dd0e1"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".35" stop-color="#b9fbff"/>
+      <stop offset="1" stop-color="#4dd0e1"/>
+    </radialGradient>
+    <filter id="coreGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.30 0 0 0 0 0.82 0 0 0 0 0.88 0 0 0 .78 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="markGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <mask id="crescentMask">
+      <rect width="512" height="512" fill="black"/>
+      <circle cx="251" cy="256" r="132" fill="white"/>
+      <circle cx="302" cy="226" r="137" fill="black"/>
+    </mask>
+  </defs>
+  <circle cx="251" cy="256" r="132" fill="url(#accent)" mask="url(#crescentMask)" filter="url(#markGlow)"/>
+  <circle cx="276" cy="281" r="38" fill="url(#core)" filter="url(#coreGlow)"/>
+  <circle cx="264" cy="268" r="9" fill="#ffffff" opacity=".82"/>
+</svg>

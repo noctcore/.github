@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">noctcore README banner</title>
+  <desc id="desc">A dark nocturnal banner with the noctcore wordmark, AI-assisted development tagline, stars, and a slim crescent moon.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080b16"/>
+      <stop offset="1" stop-color="#141a30"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#4dd0e1"/>
+    </linearGradient>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <mask id="crescentMask">
+      <rect width="1280" height="320" fill="black"/>
+      <circle cx="1078" cy="89" r="46" fill="white"/>
+      <circle cx="1097" cy="78" r="49" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="1280" height="320" fill="url(#night)"/>
+  <path d="M0 270 C230 214 430 312 644 256 C848 202 1000 171 1280 228 L1280 320 L0 320 Z" fill="#ffffff" opacity=".025"/>
+  <g fill="#ffffff">
+    <circle cx="148" cy="54" r="1.5" opacity=".32"/>
+    <circle cx="286" cy="250" r="1.1" opacity=".22"/>
+    <circle cx="470" cy="58" r="1.3" opacity=".28"/>
+    <circle cx="632" cy="230" r="1.8" opacity=".20"/>
+    <circle cx="770" cy="73" r="1.1" opacity=".24"/>
+    <circle cx="894" cy="211" r="1.4" opacity=".28"/>
+    <circle cx="1007" cy="157" r="1.2" opacity=".25"/>
+    <circle cx="1148" cy="236" r="1.6" opacity=".22"/>
+    <circle cx="1196" cy="55" r="1.1" opacity=".30"/>
+    <circle cx="1234" cy="178" r="1.3" opacity=".20"/>
+  </g>
+  <circle cx="1078" cy="89" r="46" fill="url(#accent)" mask="url(#crescentMask)" filter="url(#softGlow)"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="92" y="143" fill="#eef1f8" font-size="70" font-weight="700" letter-spacing="4">noctcore</text>
+    <rect x="96" y="165" width="188" height="5" rx="2.5" fill="url(#accent)"/>
+    <text x="96" y="210" fill="#9aa3c0" font-size="25" font-weight="400" letter-spacing=".2">Guardrails and tooling for AI-assisted software development</text>
+  </g>
+</svg>
