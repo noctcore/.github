@@ -27,9 +27,46 @@ noctcore is home to a small family of developer tools built around one idea: aut
 | Project | What it is | Status |
 | :-- | :-- | :-- |
 | **Nightcore** | A local-first, autonomous Claude dev studio: a Rust and Tauri core over a Bun provider sidecar, with governed agents that plan, build, and verify work under a policy you set. | In active development |
-| **@noctcore/harness** | A zero-dependency CLI that enforces a repository's structure lock in its own CI. No account, no server, no Nightcore install: a teammate pulls the repo and `npx @noctcore/harness check` reds the build on any violation. | Shipping soon |
+| **@noctcore/harness** | A zero-dependency CLI that enforces a repository's structure lock in its own CI. No account, no server, no Nightcore install: a teammate pulls the repo and `npx @noctcore/harness check` reds the build on any violation. | Shipped, on npm |
 | **SDK** | A typed toolkit for building on top of the studio and its provider seam. | Planned |
-| **ESLint plugins** | Shareable, generated lint rules you can drop into your own projects or wire into the harness. | Planned |
+| **ESLint plugins** | Nine focused packages (`@noctcore/eslint-plugin-*` + a shared utils package) encoding architecture, contract, and safety conventions you can drop into any project. | Shipped, on npm |
+
+### Packages
+
+Everything below is published, versioned, and live on npm today — each package name links to its source.
+
+| Package | What it does |
+| :-- | :-- |
+| [`@noctcore/harness`](https://github.com/noctcore/nightcore/tree/main/packages/harness) | Zero-dependency CLI that runs a repo's `.nightcore/harness.json` structure-lock checks in its own CI — no account, no server, no Nightcore install. Also ships a `lint-meta` subcommand for running portable meta-lint rules from a committed registry. |
+| [`@noctcore/eslint-plugin-react`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-react) | React architecture + correctness rules — prop-drilling, state colocation, memoized context, effect safety. |
+| [`@noctcore/eslint-plugin-architecture`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-architecture) | Folder-per-component and feature-boundary architecture rules. |
+| [`@noctcore/eslint-plugin-monorepo`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-monorepo) | Workspace / monorepo package-boundary hygiene. |
+| [`@noctcore/eslint-plugin-contracts`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-contracts) | Shared contract, config, and error-handling conventions — zod schema naming, wire discriminants, no-direct-process-env, decimal money. |
+| [`@noctcore/eslint-plugin-code-quality`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-code-quality) | Guard clauses, comment/test hygiene, deterministic time. |
+| [`@noctcore/eslint-plugin-async-safety`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-async-safety) | Fetch timeouts, `AbortSignal` forwarding, and shared-state / concurrency races. |
+| [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs. |
+| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal precision — no shell interpolation, opt-in path containment. |
+| [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | Shared rule-creator and AST helpers the plugins above are built on. |
+
+The harness needs nothing installed — run it straight from any repo's CI:
+
+```sh
+npx @noctcore/harness check
+npx @noctcore/harness lint-meta   # portable meta-lint rules, opt-in by presence
+```
+
+The ESLint plugins are flat-config only (ESLint 9+), independently versioned, and published with npm provenance from [noctcore/eslint-plugins](https://github.com/noctcore/eslint-plugins):
+
+```sh
+bun add -D @noctcore/eslint-plugin-react   # or npm i -D / pnpm add -D
+```
+
+```js
+// eslint.config.js (flat config)
+import react from '@noctcore/eslint-plugin-react';
+
+export default [react.configs.recommended];
+```
 
 ### Principles
 
