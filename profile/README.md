@@ -27,9 +27,10 @@ noctcore is home to a small family of developer tools built around one idea: aut
 | Project | What it is | Status |
 | :-- | :-- | :-- |
 | **Nightcore** | A local-first, autonomous Claude dev studio: a Rust and Tauri core over a Bun provider sidecar, with governed agents that plan, build, and verify work under a policy you set. | In active development |
+| **Nysia** | A terminal-first agentic development environment (Tauri v2 + Rust). Every tab is an agent or shell session, over a headless `nysiad` daemon that owns the PTYs and orchestration state, so the UI can close or crash without interrupting a running agent. Tasks come from GitHub Issues and start in branch-keyed worktrees. | In active development (v0.3) |
 | **@noctcore/harness** | A zero-dependency CLI that enforces a repository's structure lock in its own CI. No account, no server, no Nightcore install: a teammate pulls the repo and `npx @noctcore/harness check` reds the build on any violation. | Shipped, on npm |
 | **SDK** | A typed toolkit for building on top of the studio and its provider seam. | Planned |
-| **ESLint plugins** | Nine focused packages (`@noctcore/eslint-plugin-*` + a shared utils package) encoding architecture, contract, and safety conventions you can drop into any project. | Shipped, on npm |
+| **ESLint plugins** | Nine focused plugins (`@noctcore/eslint-plugin-*`), a shared utils package, and a catalog of portable lint-meta rules, encoding architecture, contract, data-integrity, and safety conventions you can drop into any project. | Shipped, on npm |
 
 ### Packages
 
@@ -44,8 +45,10 @@ Everything below is published, versioned, and live on npm today — each package
 | [`@noctcore/eslint-plugin-contracts`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-contracts) | Shared contract, config, and error-handling conventions — zod schema naming, wire discriminants, no-direct-process-env, decimal money. |
 | [`@noctcore/eslint-plugin-code-quality`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-code-quality) | Guard clauses, comment/test hygiene, deterministic time. |
 | [`@noctcore/eslint-plugin-async-safety`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-async-safety) | Fetch timeouts, `AbortSignal` forwarding, and shared-state / concurrency races. |
-| [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs. |
-| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal precision — no shell interpolation, opt-in path containment. |
+| [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs, no error-detail loss. |
+| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal / SSRF / open-redirect precision — no shell interpolation, fixed-origin fetch and redirect targets, opt-in path containment. |
+| [`@noctcore/eslint-plugin-prisma`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-prisma) | Prisma tenancy, data-integrity, and transaction guardrails — unscoped-client and raw-SQL fences, tenant and soft-delete filters, single-writer models, multi-write transactions, audit placement. |
+| [`@noctcore/lint-meta-rules`](https://github.com/noctcore/eslint-plugins/tree/main/packages/lint-meta-rules) | Portable, parameterized whole-repo / cross-file invariants ESLint can't reach (package naming, declared workspace deps, file-size ratchets), run by `harness lint-meta`. |
 | [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | Shared rule-creator and AST helpers the plugins above are built on. |
 
 The harness needs nothing installed — run it straight from any repo's CI:
