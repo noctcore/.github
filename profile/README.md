@@ -34,22 +34,22 @@ noctcore is home to a small family of developer tools built around one idea: aut
 
 ### Packages
 
-Everything below is published, versioned, and live on npm today — each package name links to its source.
+Everything below is published, versioned, and live on npm today — each package name links to its source, and the ESLint packages link to their rule docs.
 
-| Package | What it does |
-| :-- | :-- |
-| [`@noctcore/harness`](https://github.com/noctcore/nightcore/tree/main/packages/harness) | Zero-dependency CLI that runs a repo's `.nightcore/harness.json` structure-lock checks in its own CI — no account, no server, no Nightcore install. Also ships a `lint-meta` subcommand for running portable meta-lint rules from a committed registry. |
-| [`@noctcore/eslint-plugin-react`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-react) | React architecture + correctness rules — prop-drilling, state colocation, memoized context, effect safety. |
-| [`@noctcore/eslint-plugin-architecture`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-architecture) | Folder-per-component and feature-boundary architecture rules. |
-| [`@noctcore/eslint-plugin-monorepo`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-monorepo) | Workspace / monorepo package-boundary hygiene. |
-| [`@noctcore/eslint-plugin-contracts`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-contracts) | Shared contract, config, and error-handling conventions — zod schema naming, wire discriminants, no-direct-process-env, decimal money. |
-| [`@noctcore/eslint-plugin-code-quality`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-code-quality) | Guard clauses, comment/test hygiene, deterministic time. |
-| [`@noctcore/eslint-plugin-async-safety`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-async-safety) | Fetch timeouts, `AbortSignal` forwarding, and shared-state / concurrency races. |
-| [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs, no error-detail loss. |
-| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal / SSRF / open-redirect precision — no shell interpolation, fixed-origin fetch and redirect targets, opt-in path containment. |
-| [`@noctcore/eslint-plugin-prisma`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-prisma) | Prisma tenancy, data-integrity, and transaction guardrails — unscoped-client and raw-SQL fences, tenant and soft-delete filters, single-writer models, multi-write transactions, audit placement. |
-| [`@noctcore/lint-meta-rules`](https://github.com/noctcore/eslint-plugins/tree/main/packages/lint-meta-rules) | Portable, parameterized whole-repo / cross-file invariants ESLint can't reach (package naming, declared workspace deps, file-size ratchets), run by `harness lint-meta`. |
-| [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | Shared rule-creator and AST helpers the plugins above are built on. |
+| Package | What it does | Docs |
+| :-- | :-- | :-- |
+| [`@noctcore/harness`](https://github.com/noctcore/nightcore/tree/main/packages/harness) | Zero-dependency CLI that runs a repo's `.nightcore/harness.json` structure-lock checks in its own CI — no account, no server, no Nightcore install. Also ships a `lint-meta` subcommand for running portable meta-lint rules from a committed registry. | — |
+| [`@noctcore/eslint-plugin-react`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-react) | React architecture + correctness rules — prop-drilling, state colocation, memoized context, effect safety. | [docs](https://noctcore.github.io/eslint-plugins/packages/react/) |
+| [`@noctcore/eslint-plugin-architecture`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-architecture) | Folder-per-component and feature-boundary architecture rules. | [docs](https://noctcore.github.io/eslint-plugins/packages/architecture/) |
+| [`@noctcore/eslint-plugin-monorepo`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-monorepo) | Workspace / monorepo package-boundary hygiene. | [docs](https://noctcore.github.io/eslint-plugins/packages/monorepo/) |
+| [`@noctcore/eslint-plugin-contracts`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-contracts) | Shared contract, config, and error-handling conventions — zod schema naming, wire discriminants, no-direct-process-env, decimal money. | [docs](https://noctcore.github.io/eslint-plugins/packages/contracts/) |
+| [`@noctcore/eslint-plugin-code-quality`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-code-quality) | Guard clauses, comment/test hygiene, deterministic time. | [docs](https://noctcore.github.io/eslint-plugins/packages/code-quality/) |
+| [`@noctcore/eslint-plugin-async-safety`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-async-safety) | Fetch timeouts, `AbortSignal` forwarding, and shared-state / concurrency races. | [docs](https://noctcore.github.io/eslint-plugins/packages/async-safety/) |
+| [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs, no error-detail loss. | [docs](https://noctcore.github.io/eslint-plugins/packages/observability/) |
+| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal / SSRF / open-redirect precision — no shell interpolation, fixed-origin fetch and redirect targets, opt-in path containment. | [docs](https://noctcore.github.io/eslint-plugins/packages/security/) |
+| [`@noctcore/eslint-plugin-prisma`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-prisma) | Prisma tenancy, data-integrity, and transaction guardrails — unscoped-client and raw-SQL fences, tenant and soft-delete filters, single-writer models, multi-write transactions, audit placement. | [docs](https://noctcore.github.io/eslint-plugins/packages/prisma/) |
+| [`@noctcore/lint-meta-rules`](https://github.com/noctcore/eslint-plugins/tree/main/packages/lint-meta-rules) | Portable, parameterized whole-repo / cross-file invariants ESLint can't reach (package naming, declared workspace deps, file-size ratchets), run by `harness lint-meta`. | [docs](https://noctcore.github.io/eslint-plugins/packages/lint-meta-rules/) |
+| [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | Shared rule-creator and AST helpers the plugins above are built on. | — |
 
 The harness needs nothing installed — run it straight from any repo's CI:
 
