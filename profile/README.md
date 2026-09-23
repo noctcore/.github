@@ -58,7 +58,7 @@ npx @noctcore/harness check
 npx @noctcore/harness lint-meta   # portable meta-lint rules, opt-in by presence
 ```
 
-The ESLint plugins are flat-config only (ESLint 9+), independently versioned, and published with npm provenance from [noctcore/eslint-plugins](https://github.com/noctcore/eslint-plugins):
+The ESLint plugins are flat-config only (ESLint 9+), independently versioned, and published with npm provenance from [noctcore/eslint-plugins](https://github.com/noctcore/eslint-plugins). Every rule, its options, and the recommended configs are documented at [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/):
 
 ```sh
 bun add -D @noctcore/eslint-plugin-react   # or npm i -D / pnpm add -D
@@ -81,6 +81,7 @@ export default [react.configs.recommended];
 ### Links
 
 - npm: [npmjs.com/org/noctcore](https://www.npmjs.com/org/noctcore)
+- ESLint plugin docs: [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/)
 - Web: [shirone.dev](https://shirone.dev)
 - Contact: [support@shirone.dev](mailto:support@shirone.dev)
 
