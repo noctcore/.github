@@ -30,7 +30,7 @@ noctcore is home to a small family of developer tools built around one idea: aut
 | **Nysia** | A terminal-first agentic development environment (Tauri v2 + Rust). Every tab is an agent or shell session, over a headless `nysiad` daemon that owns the PTYs and orchestration state, so the UI can close or crash without interrupting a running agent. Tasks come from GitHub Issues and start in branch-keyed worktrees. | In active development (v0.3) |
 | **@noctcore/harness** | A zero-dependency CLI that enforces a repository's structure lock in its own CI. No account, no server, no Nightcore install: a teammate pulls the repo and `npx @noctcore/harness check` reds the build on any violation. | Shipped, on npm |
 | **SDK** | A typed toolkit for building on top of the studio and its provider seam. | Planned |
-| **ESLint plugins** | Nine focused plugins (`@noctcore/eslint-plugin-*`), a shared utils package, and a catalog of portable lint-meta rules, encoding architecture, contract, data-integrity, and safety conventions you can drop into any project. | Shipped, on npm |
+| **ESLint plugins** | Eleven focused plugins (`@noctcore/eslint-plugin-*`), a shared utils package, and a catalog of portable lint-meta rules, encoding architecture, contract, data-integrity, and safety conventions you can drop into any project. | Shipped, on npm |
 
 ### Packages
 
@@ -46,8 +46,10 @@ Everything below is published, versioned, and live on npm today — each package
 | [`@noctcore/eslint-plugin-code-quality`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-code-quality) | Guard clauses, comment/test hygiene, deterministic time. | [docs](https://noctcore.github.io/eslint-plugins/packages/code-quality/) |
 | [`@noctcore/eslint-plugin-async-safety`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-async-safety) | Fetch timeouts, `AbortSignal` forwarding, and shared-state / concurrency races. | [docs](https://noctcore.github.io/eslint-plugins/packages/async-safety/) |
 | [`@noctcore/eslint-plugin-observability`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-observability) | Structured-logging discipline — context objects over interpolated messages, no sensitive fields in logs, no error-detail loss. | [docs](https://noctcore.github.io/eslint-plugins/packages/observability/) |
-| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Injection / path-traversal / SSRF / open-redirect precision — no shell interpolation, fixed-origin fetch and redirect targets, opt-in path containment. | [docs](https://noctcore.github.io/eslint-plugins/packages/security/) |
+| [`@noctcore/eslint-plugin-security`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-security) | Shell injection, path traversal, SSRF, open redirect, unsanitized HTML (XSS), timing-unsafe secret comparison, and server actions that bypass their action client. | [docs](https://noctcore.github.io/eslint-plugins/packages/security/) |
 | [`@noctcore/eslint-plugin-prisma`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-prisma) | Prisma tenancy, data-integrity, and transaction guardrails — unscoped-client and raw-SQL fences, tenant and soft-delete filters, single-writer models, multi-write transactions, audit placement. | [docs](https://noctcore.github.io/eslint-plugins/packages/prisma/) |
+| [`@noctcore/eslint-plugin-rsc`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-rsc) | React Server Components and App Router correctness: navigation errors (`redirect`, `notFound`) that a `try`/`catch` must not swallow. | [docs](https://noctcore.github.io/eslint-plugins/packages/rsc/) |
+| [`@noctcore/eslint-plugin-llm`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-llm) | Code that calls LLM SDKs: model output treated as untrusted input before it reaches `eval`, shell, raw SQL, HTML, `fetch` or the filesystem. | [docs](https://noctcore.github.io/eslint-plugins/packages/llm/) |
 | [`@noctcore/lint-meta-rules`](https://github.com/noctcore/eslint-plugins/tree/main/packages/lint-meta-rules) | Portable, parameterized whole-repo / cross-file invariants ESLint can't reach (package naming, declared workspace deps, file-size ratchets), run by `harness lint-meta`. | [docs](https://noctcore.github.io/eslint-plugins/packages/lint-meta-rules/) |
 | [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | Shared rule-creator and AST helpers the plugins above are built on. | — |
 
@@ -58,18 +60,27 @@ npx @noctcore/harness check
 npx @noctcore/harness lint-meta   # portable meta-lint rules, opt-in by presence
 ```
 
-The ESLint plugins are flat-config only (ESLint 9+), independently versioned, and published with npm provenance from [noctcore/eslint-plugins](https://github.com/noctcore/eslint-plugins). Every rule, its options, and the recommended configs are documented at [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/):
+The ESLint plugins are flat-config only (ESLint 9+), independently versioned, and published through npm trusted publishing with provenance from [noctcore/eslint-plugins](https://github.com/noctcore/eslint-plugins). Every rule, its options, and the recommended configs are documented at [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/):
 
 ```sh
-bun add -D @noctcore/eslint-plugin-react   # or npm i -D / pnpm add -D
+npm i -D @noctcore/eslint-plugin-code-quality @typescript-eslint/parser   # or bun add -D / pnpm add -D
 ```
 
 ```js
-// eslint.config.js (flat config)
-import react from '@noctcore/eslint-plugin-react';
+// eslint.config.js (flat config). The presets set no `files` and no parser, so give them both.
+import tsParser from '@typescript-eslint/parser';
+import codeQuality from '@noctcore/eslint-plugin-code-quality';
 
-export default [react.configs.recommended];
+export default [
+  {
+    ...codeQuality.configs.recommended,
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: { parser: tsParser },
+  },
+];
 ```
+
+New here? Start with `code-quality`, `async-safety` and `contracts`, then add the plugins for your stack; the [Where to start](https://github.com/noctcore/eslint-plugins#where-to-start) guide has a combined config.
 
 ### Principles
 
