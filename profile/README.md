@@ -30,6 +30,7 @@ noctcore is home to a small family of developer tools built around one idea: aut
 | [**Nysia**](https://github.com/noctcore/nysia) | A terminal-first agentic development environment (Tauri v2 + Rust). Every tab is an agent or shell session over a headless `nysiad` daemon that owns the terminals and orchestration state, so the UI can close or crash without interrupting a running agent. Tasks come from GitHub Issues and start in branch-keyed worktrees. | In active development (v0.3) | [Build from source](https://github.com/noctcore/nysia) |
 | [**Harness**](https://github.com/noctcore/nightcore/tree/main/packages/harness) | A zero-dependency CLI that enforces a repository's structure lock in that repo's own CI. No account, no server, no Nightcore install: a teammate clones the repo and `npx @noctcore/harness check` fails the build on any violation. | Shipped, on npm | `npx @noctcore/harness check` |
 | [**ESLint plugins**](https://github.com/noctcore/eslint-plugins) | Eleven focused plugins, a shared utils package, and a catalog of whole-repo lint-meta rules. They catch architecture, contract, data-integrity, and safety problems that generic linters can't see. | Shipped, on npm | [Docs](https://noctcore.github.io/eslint-plugins/) · [Where to start](https://github.com/noctcore/eslint-plugins#where-to-start) |
+| [**showcase-kit**](https://github.com/noctcore/showcase-kit) | Capture, frame and export showcase images of desktop, web and terminal apps for READMEs and portfolios, from one config file. | Shipped, on npm | [Docs](https://noctcore.github.io/showcase-kit/) · [Gallery](https://noctcore.github.io/showcase-kit/gallery/) |
 | **SDK** | A typed toolkit for building on top of the studio and its provider layer. | Planned | |
 
 ### Packages
@@ -52,6 +53,7 @@ Everything below is published on npm with provenance through npm trusted publish
 | [`@noctcore/eslint-plugin-monorepo`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-plugin-monorepo) | [![npm](https://img.shields.io/npm/v/@noctcore/eslint-plugin-monorepo?label=)](https://www.npmjs.com/package/@noctcore/eslint-plugin-monorepo) | Workspace package boundaries (barrel-only and exports-map-aware imports); needs your workspace scope. | [docs](https://noctcore.github.io/eslint-plugins/packages/monorepo/) |
 | [`@noctcore/lint-meta-rules`](https://github.com/noctcore/eslint-plugins/tree/main/packages/lint-meta-rules) | [![npm](https://img.shields.io/npm/v/@noctcore/lint-meta-rules?label=)](https://www.npmjs.com/package/@noctcore/lint-meta-rules) | Whole-repo rules ESLint can't reach (package naming, declared workspace deps, file-size ratchets), run by `harness lint-meta`. | [docs](https://noctcore.github.io/eslint-plugins/packages/lint-meta-rules/) |
 | [`@noctcore/eslint-utils`](https://github.com/noctcore/eslint-plugins/tree/main/packages/eslint-utils) | [![npm](https://img.shields.io/npm/v/@noctcore/eslint-utils?label=)](https://www.npmjs.com/package/@noctcore/eslint-utils) | Shared rule-creator and AST helpers the plugins are built on. | |
+| [`@noctcore/showcase-kit`](https://github.com/noctcore/showcase-kit) | [![npm](https://img.shields.io/npm/v/@noctcore/showcase-kit?label=)](https://www.npmjs.com/package/@noctcore/showcase-kit) | Capture, frame and export showcase images of desktop and web apps for READMEs and portfolios. | [docs](https://noctcore.github.io/showcase-kit/) |
 
 #### Harness
 
@@ -97,6 +99,7 @@ New here? Start with `code-quality`, `async-safety` and `contracts`, then add th
 
 - npm: [npmjs.com/org/noctcore](https://www.npmjs.com/org/noctcore)
 - ESLint plugin docs: [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/)
+- showcase-kit docs: [noctcore.github.io/showcase-kit](https://noctcore.github.io/showcase-kit/)
 - Nightcore releases: [github.com/noctcore/nightcore/releases](https://github.com/noctcore/nightcore/releases)
 - Web: [shirone.dev](https://shirone.dev)
 - Contact: [support@shirone.dev](mailto:support@shirone.dev)
