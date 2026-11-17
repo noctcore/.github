@@ -103,7 +103,7 @@ The [getting started guide](https://noctcore.github.io/auth/start/getting-starte
 
 #### harness
 
-List the checks in the repo's manifest (`.nightcore/harness.json` today; the manifest is moving to `.noctcore/harness.json`, and the old path keeps being read), then run them locally or as a CI step:
+List the checks in the repo's manifest (`.noctcore/harness.json` since 0.6.0; the old `.nightcore/harness.json` is still read until 1.0), then run them locally or as a CI step:
 
 ```sh
 npx @noctcore/harness check
