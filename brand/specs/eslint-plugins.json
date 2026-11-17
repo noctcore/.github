@@ -1,0 +1,9 @@
+{ "name": "noctcore/eslint-plugins", "mark": "eslint-plugins",
+  "headline": "Catch bugs that compile.", "subline": "Focused rule families for what generic linters miss.",
+  "eyebrow": "ESLINT 9 / FLAT CONFIG / MIT",
+  "alt": "noctcore/eslint-plugins. Catch bugs that compile. Focused rule families for what generic linters miss.",
+  "description": "Source code passes three plugin families on its way to a clean lint run. The contracts plugin stops a fetch whose response is never checked, async-safety stops a fetch with no timeout, and security stops shell interpolation.",
+  "diagram": { "start": "source", "end": "clean lint", "gates": [
+    { "name": "contracts", "stops": ["unchecked fetch"] },
+    { "name": "async-safety", "stops": ["no timeout"] },
+    { "name": "security", "stops": ["shell interpolation"] } ] } }

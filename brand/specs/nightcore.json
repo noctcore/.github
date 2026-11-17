@@ -1,0 +1,9 @@
+{ "name": "noctcore/nightcore", "mark": "nightcore",
+  "headline": "Nothing merges on trust.", "subline": "Agents plan, build and verify under a policy you set.",
+  "eyebrow": "RUST / TAURI / OPEN SOURCE",
+  "alt": "noctcore/nightcore. Nothing merges on trust. Agents plan, build and verify under a policy you set.",
+  "description": "Work built in an isolated worktree passes the guardrail battery, the Structure-Lock gate and an independent reviewer agent before it reaches your branch. A skipped test stops at the guardrails, a cross-layer import stops at the Structure-Lock, and a FAIL verdict stops at the reviewer.",
+  "diagram": { "start": "worktree", "end": "your branch", "gates": [
+    { "name": "guardrails", "stops": ["skipped test"] },
+    { "name": "structure-lock", "stops": ["cross-layer import"] },
+    { "name": "reviewer agent", "stops": ["FAIL verdict"] } ] } }

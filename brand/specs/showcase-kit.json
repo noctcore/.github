@@ -1,0 +1,9 @@
+{ "name": "noctcore/showcase-kit", "mark": "showcase-kit",
+  "headline": "Same pixels, every run.", "subline": "Capture, frame and export from one config file.",
+  "eyebrow": "PLAYWRIGHT / TYPESCRIPT / MIT",
+  "alt": "noctcore/showcase-kit. Same pixels, every run. Capture, frame and export from one config file.",
+  "description": "One config drives capture, frame and export through to README images. Running animations and half-drawn screens stop at capture, so each run produces the same pixels.",
+  "diagram": { "start": "config", "end": "README", "gates": [
+    { "name": "capture", "stops": ["animations", "half-drawn screen"] },
+    { "name": "frame" },
+    { "name": "export" } ] } }

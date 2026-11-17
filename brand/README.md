@@ -1,29 +1,33 @@
-# noctcore Brand Assets
+# noctcore brand
 
-Visual assets for `noctcore`, an umbrella brand for developer tools focused on governed, AI-assisted software development.
-
-Mood: calm, premium, technical, nocturnal. Think observatory at night, not neon arcade.
-
-## Palette
-
-- Deep night background gradient: `#080b16` to `#141a30`
-- Accent gradient: `#8b7cff` to `#4dd0e1`
-- Primary text: `#eef1f8`
-- Muted text: `#9aa3c0`
-- Star and highlight white: `#ffffff`
+The brand system is **[BRAND.md](BRAND.md)**: colour and type tokens, sizes,
+the mark rules and how a banner's mechanism diagram is drawn. Tokens are in
+[`tokens.json`](tokens.json) (source) and [`tokens.css`](tokens.css).
 
 ## Files
 
-- `readme-banner.svg`: 1280x320 GitHub README/profile banner.
-- `logo-tile.svg`: 512x512 rounded-square org avatar/app icon.
-- `logo-mark-transparent.svg`: 512x512 transparent standalone mark.
-- `social-preview.svg`: 1280x640 Open Graph/social preview card.
-- `favicon.svg`: 32x32 simplified mark.
+| File | Purpose |
+| --- | --- |
+| `readme-header-dark.svg` | Org header, 1280 x 360, for a dark surface |
+| `readme-header-light.svg` | Org header, 1280 x 360, for a light surface |
+| `social-preview.svg` / `.png` | 1280 x 640 social preview (night) |
+| `../profile/assets/banner.png` | The org profile banner: the dark header as a 2x PNG |
+| `generator/` | Renders any banner set from a spec (see BRAND.md, Generator) |
+| `specs/` | One spec per banner; `auth.json` rebuilds the noctcore/auth header as a calibration check |
 
-## Rules
+To rebuild the org banner:
 
-- Wordmark is always lowercase `noctcore`.
-- Use generous letter spacing for wordmark treatments.
-- Keep the look sparse: no more than three focal elements.
-- Avoid heavy shadows; use only soft glow.
-- SVGs are self-contained and use safe system font stacks.
+```sh
+cd brand/generator
+pnpm install --ignore-workspace
+node render.mjs ../specs/noctcore.json ../out/noctcore
+```
+
+then copy `readme-header-*.svg`, `social-preview.*` into `brand/` and
+`banner.png` to `profile/assets/banner.png`.
+
+## Legacy files
+
+`logo-tile.svg`, `logo-mark-transparent.svg`, `favicon.svg` and
+`png/avatar.png` are the previous avatar set. They stay in use until an avatar
+is drawn in the blueprint language.
