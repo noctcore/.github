@@ -1,0 +1,9 @@
+{ "name": "noctcore/nysia", "mark": "nysia",
+  "headline": "The window is optional.", "subline": "One daemon owns the terminals. Tabs are clients.",
+  "eyebrow": "RUST / TAURI / OPEN SOURCE",
+  "alt": "noctcore/nysia. The window is optional. One daemon owns the terminals. Tabs are clients.",
+  "description": "A GitHub issue starts into a branch-keyed worktree, then a session owned by the nysiad daemon, then a tab in the window. A closed window and a crashed UI stop at the daemon, so the running agent keeps going.",
+  "diagram": { "start": "issue", "end": "agent running", "gates": [
+    { "name": "worktree" },
+    { "name": "nysiad session", "stops": ["window closed", "UI crash"] },
+    { "name": "tab" } ] } }

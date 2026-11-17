@@ -1,0 +1,9 @@
+{ "name": "noctcore", "mark": "noctcore", "profile": true,
+  "headline": "Autonomy, governed.", "subline": "Agents write the code. Every change still passes a gate.",
+  "eyebrow": "LOCAL FIRST / OPEN SOURCE",
+  "alt": "noctcore. Autonomy, governed. Agents write the code. Every change still passes a gate.",
+  "description": "An agent's diff travels toward your branch through lint rules, repo checks and a verification gauntlet. Shell injection stops at the lint rules, a CI job that installs packages while it holds a secret stops at the repo checks, and a skipped test stops at the gauntlet.",
+  "diagram": { "start": "agent diff", "end": "your branch", "gates": [
+    { "name": "lint rules", "stops": ["shell injection"] },
+    { "name": "repo checks", "stops": ["secret at install"] },
+    { "name": "gauntlet", "stops": ["skipped test"] } ] } }
