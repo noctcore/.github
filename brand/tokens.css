@@ -1,0 +1,50 @@
+/* noctcore blueprint tokens. Generated from tokens.json; hex sRGB is the source of truth. */
+:root {
+  /* Night is the lead expression. */
+  --nc-background: #17212D;
+  --nc-foreground: #F0F3F6;
+  --nc-accent: #AAC8E2;
+  --nc-secondary: #B3BEC9;
+  --nc-stop: #D9A08E;
+  --nc-line: #405367;
+  --nc-grid: #253344;
+  --nc-raised: #202F40;
+  --nc-side: #2C4055;
+  --nc-shadow: #101924;
+  --nc-grid-cell: 40px;
+  --nc-grid-opacity: 0.48;
+  --nc-font-display: "Manrope", ui-sans-serif, sans-serif; /* weight 600 */
+  --nc-font-sans: "Manrope", ui-sans-serif, sans-serif; /* weight 550 */
+  --nc-font-mono: "DM Mono", ui-monospace, monospace; /* weight 400 */
+  --nc-weight-display: 600;
+  --nc-weight-sans: 550;
+  --nc-weight-mono: 400;
+}
+
+/* Paper, for light surfaces. */
+:root[data-theme="light"] {
+  --nc-background: #F6F5F1;
+  --nc-foreground: #202B39;
+  --nc-accent: #355E87;
+  --nc-secondary: #596773;
+  --nc-stop: #92513E;
+  --nc-line: #B9C6D0;
+  --nc-grid: #E3E6E6;
+  --nc-raised: #EDF0F1;
+  --nc-side: #CCD8E1;
+  --nc-shadow: #DDE2E4;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --nc-background: #F6F5F1;
+    --nc-foreground: #202B39;
+    --nc-accent: #355E87;
+    --nc-secondary: #596773;
+    --nc-stop: #92513E;
+    --nc-line: #B9C6D0;
+    --nc-grid: #E3E6E6;
+    --nc-raised: #EDF0F1;
+    --nc-side: #CCD8E1;
+    --nc-shadow: #DDE2E4;
+  }
+}
