@@ -107,6 +107,7 @@ not redrawn.
 | `nysia` (draft) | A terminal frame with its title bar lifted off, the core as the cursor | The window detaches; the terminal stays |
 | `eslint-plugins` | Lines of code, one token held apart and underlined | A report that points at the exact place |
 | `showcase-kit` | Four corners | A viewfinder framing the capture |
+| `jobs` | A frame holding the core deep in its mouth, one square waiting at the entrance | One job held by the worker, the next in turn |
 
 The `nightcore` and `nysia` marks and their banner specs are drafts kept for
 later; neither repo has adopted them, and their app icons are unchanged.

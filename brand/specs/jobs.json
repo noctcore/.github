@@ -1,0 +1,10 @@
+{ "name": "noctcore/jobs", "mark": "jobs",
+  "headline": "Jobs without the traps.", "subline": "Every add picks a dedupe. Every retry backs off.",
+  "eyebrow": "NESTJS / BULLMQ 6 / MIT",
+  "alt": "noctcore/jobs. Jobs without the traps. Every add picks a dedupe. Every retry backs off. Diagram: add() passes the producer, the dedupe and the queue policy to a JobHost worker and ends completed; a hung request stops at the producer, a duplicate job at the dedupe and a retry storm at the policy.",
+  "description": "One add() call on its way to completed: inside add(), the producer guard refuses at once while Redis is down, so a request never hangs, and the required dedupe drops a repeat of the same job; the queue policy's jittered backoff keeps retries from firing as one storm; a JobHost worker runs the job.",
+  "diagram": { "start": "add()", "end": "completed", "gates": [
+    { "name": "producer", "stops": ["hung request"] },
+    { "name": "dedupe", "stops": ["duplicate job"] },
+    { "name": "policy", "stops": ["retry storm"] },
+    { "name": "JobHost" } ] } }

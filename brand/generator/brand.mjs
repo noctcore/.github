@@ -118,6 +118,13 @@ export const marks = {
     [12, 28, 12, 8], [28, 28, 8, 8], [40, 28, 12, 8],
     [24, 44, 16, 8],
   ],
+  // A queue feeding a worker: the worker's frame holds one job (the core)
+  // deep in its mouth, and the next job waits outside at the entrance.
+  jobs: [
+    [12, 28, 8, 8],
+    [24, 12, 28, 8], [44, 20, 8, 24], [24, 44, 28, 8],
+    [32, 28, 8, 8],
+  ],
   // A viewfinder: four corners frame the core.
   'showcase-kit': [
     [12, 12, 16, 8], [12, 20, 8, 8], [36, 12, 16, 8], [44, 20, 8, 8],
