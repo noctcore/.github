@@ -37,6 +37,7 @@ noctcore is home to a small family of developer tools built around one idea: aut
 | [**harness**](https://github.com/noctcore/harness) | Holds a TypeScript repo to its own rules in any CI: a check runner over a committed manifest, a lint-meta engine for whole-repo rules ESLint cannot reach, ready-made rules (`/rules`) and zizmor, actionlint and gitleaks pinned to an exact version (`/pinned-tools`). Zero runtime dependencies, no network, no account. | Shipped, 0.6 on npm | [Docs](https://noctcore.github.io/harness/) · `npx @noctcore/harness check` |
 | [**ESLint plugins**](https://github.com/noctcore/eslint-plugins) | Fifteen focused plugins, a shared utils package and a catalog of whole-repo lint-meta rules. They catch architecture, contract, data-integrity and safety problems that generic linters can't see. | Shipped, on npm | [Docs](https://noctcore.github.io/eslint-plugins/) · [Where to start](https://github.com/noctcore/eslint-plugins#where-to-start) |
 | [**showcase-kit**](https://github.com/noctcore/showcase-kit) | Capture, frame and export showcase images of desktop, web and terminal apps for READMEs and portfolios, from one config file. | Shipped, 0.3 on npm | [Docs](https://noctcore.github.io/showcase-kit/) · [Gallery](https://noctcore.github.io/showcase-kit/gallery/) |
+| [**jobs**](https://github.com/noctcore/jobs) | BullMQ 6 for NestJS with the safe choice made the default: typed queues with required retry and retention policies, a dedupe on every enqueue, producers that fail fast during a Redis outage, sweeps that run once per tick across replicas and a shutdown that waits for running jobs. | Shipped, 0.1 on npm | [Docs](https://noctcore.github.io/jobs/) · [Getting started](https://noctcore.github.io/jobs/start/getting-started/) |
 
 ### Packages
 
@@ -90,6 +91,14 @@ Flat config only (ESLint 9+), each plugin versioned on its own.
 | :-- | :-- | :-- | :-- |
 | [`@noctcore/showcase-kit`](https://github.com/noctcore/showcase-kit) | [![npm](https://img.shields.io/npm/v/@noctcore/showcase-kit?label=)](https://www.npmjs.com/package/@noctcore/showcase-kit) | The `showcase` CLI: raw captures, framed README images, portfolio images, hero banners, terminal clips and app icons from one config. | [docs](https://noctcore.github.io/showcase-kit/) |
 
+#### jobs
+
+Pre-1.0: the API may change in any minor release.
+
+| Package | npm | What it does | Docs |
+| :-- | :-- | :-- | :-- |
+| [`@noctcore/jobs`](https://github.com/noctcore/jobs/tree/main/packages/jobs) | [![npm](https://img.shields.io/npm/v/@noctcore/jobs?label=)](https://www.npmjs.com/package/@noctcore/jobs) | `defineQueue` with a typed policy, `queue.add` with a required dedupe, `@Worker` on a `JobHost` base, `@Sweep` on BullMQ job schedulers, `installGracefulShutdown`, and Prometheus, OpenTelemetry and Sentry adapters. | [docs](https://noctcore.github.io/jobs/) |
+
 ### Quickstart
 
 #### auth
@@ -111,6 +120,14 @@ npx @noctcore/harness lint-meta   # whole-repo rules from a committed registry
 ```
 
 A check that could not run is a failure, never a pass. The [docs](https://noctcore.github.io/harness/) cover the manifest, writing a rule, baselines and pinned tools.
+
+#### jobs
+
+```sh
+npm i @noctcore/jobs bullmq ioredis   # or bun add / pnpm add
+```
+
+Define a queue with its policy, enqueue with a dedupe, process it in a `JobHost` worker. The [getting started guide](https://noctcore.github.io/jobs/start/getting-started/) builds one queue end to end.
 
 #### ESLint plugins
 
@@ -150,6 +167,7 @@ New here? Start with `code-quality`, `async-safety` and `contracts`, then add th
 - harness docs: [noctcore.github.io/harness](https://noctcore.github.io/harness/)
 - ESLint plugin docs: [noctcore.github.io/eslint-plugins](https://noctcore.github.io/eslint-plugins/)
 - showcase-kit docs: [noctcore.github.io/showcase-kit](https://noctcore.github.io/showcase-kit/)
+- jobs docs: [noctcore.github.io/jobs](https://noctcore.github.io/jobs/)
 - Nightcore releases: [github.com/noctcore/nightcore/releases](https://github.com/noctcore/nightcore/releases)
 - Web: [shirone.dev](https://shirone.dev)
 - Contact: [support@shirone.dev](mailto:support@shirone.dev)
